@@ -92,7 +92,6 @@ class MyText extends StatelessWidget{
   const MyText({Key? key}): super(key: key);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       width: 200,
       height: 100,
@@ -123,7 +122,6 @@ class MyImage extends StatelessWidget{  //图片显示
   const MyImage({Key? key}): super(key: key);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       width: 350,
       height: 250,
