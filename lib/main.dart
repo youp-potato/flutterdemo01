@@ -10,7 +10,12 @@ void main(){
           MyApp(),
           MyButton(),
           MyText(),
-          MyImage()
+          SizedBox(height: 10,),//占一个高度
+          Circular(),
+          SizedBox(height: 10,),
+          ClipImage(),
+          SizedBox(height: 10,),
+          LocalImage()
         ],
       )
     ),
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget{
     // TODO: implement build
     return Center(
       child: Container(//Container不是常量构造函数
-        margin: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+        margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
         alignment: Alignment.center,
         width: 100,
         height: 100,
@@ -95,7 +100,7 @@ class MyText extends StatelessWidget{
     return Container(
       width: 200,
       height: 100,
-      margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
       decoration: const BoxDecoration(
         color: Colors.yellow
       ),
@@ -140,4 +145,59 @@ class MyImage extends StatelessWidget{  //图片显示
     );
   }
   
+}
+
+class Circular extends StatelessWidget{ //生成圆形图片
+  const Circular({Key? key}):super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 150,
+      width: 150,
+      decoration:  BoxDecoration(  //想要实现圆形图片需要在decoration里面设置
+        color: Colors.yellow,
+        borderRadius: BorderRadius.circular(75),  //生成圆形容器
+        image: const DecorationImage(
+            image: NetworkImage("https://lmg.jj20.com/up/allimg/4k/s/02/2109250006343S5-0-lp.jpg"),
+            fit: BoxFit.cover
+        )
+      ),
+    );
+  }
+
+}
+
+class ClipImage extends StatelessWidget{  //使用ClipOval实现圆形图片
+  const ClipImage({Key? key}):super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipOval(
+      child: Image.network(
+        "https://lmg.jj20.com/up/allimg/4k/s/02/2109250006343S5-0-lp.jpg",
+        height: 150,
+        width: 150,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+}
+
+class LocalImage extends StatelessWidget{   //加载本地图片
+  const LocalImage({Key? key}):super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 150,
+      width: 150,
+      decoration: const BoxDecoration(
+        color: Colors.yellow
+      ),
+      child: Image.asset("images/dog.jpeg",),
+    );
+  }
+
 }
